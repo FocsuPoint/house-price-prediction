@@ -110,62 +110,26 @@ window.addEventListener("scroll", () => {
 });
 // ===============================
 // Prediction Form
+// Submit to Flask so the real machine-learning model makes the prediction.
 // ===============================
-
 const predictionForm = document.getElementById("predictionForm");
-const predictedPrice = document.getElementById("predictedPrice");
-
 if (predictionForm) {
-
-    predictionForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
+    predictionForm.addEventListener("submit", function (event) {
         const inputs = predictionForm.querySelectorAll("input, select");
-
         let valid = true;
-
-        inputs.forEach(input => {
-
-            if (input.value === "" || input.value === "Select") {
-
+        inputs.forEach((input) => {
+            if (!input.value) {
                 input.style.borderColor = "red";
-
                 valid = false;
-
             } else {
-
                 input.style.borderColor = "#d1d5db";
-
             }
-
         });
-
         if (!valid) {
-
+            event.preventDefault();
             alert("Please fill all the fields.");
-
-            return;
-
         }
-
-        predictedPrice.innerHTML = `
-            <div class="loader"></div>
-            <p class="mt-4 text-gray-500">Calculating Price...</p>
-        `;
-
-        setTimeout(() => {
-
-            const price = Math.floor(Math.random() * 5000000) + 2500000;
-
-            predictedPrice.innerHTML = formatIndianCurrency(price);
-
-            predictedPrice.classList.add("prediction-success");
-
-        }, 2000);
-
     });
-
 }
 
 // ===============================

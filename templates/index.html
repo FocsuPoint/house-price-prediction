@@ -1,1 +1,1081 @@
-<h1>Hi</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI House Price Prediction</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563EB",
+                        secondary: "#7C3AED",
+                        dark: "#0F172A",
+                        light: "#F8FAFC"
+                    },
+                    fontFamily: {
+                        poppins: ["Poppins", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="bg-slate-100 font-poppins">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center h-20">
+
+                <div class="flex items-center gap-3">
+
+                    <div
+                        class="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white flex justify-center items-center text-xl">
+
+                        <i class="fa-solid fa-house"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h2 class="text-xl font-bold text-slate-800">
+
+                            HouseAI
+
+                        </h2>
+
+                        <p class="text-xs text-gray-500">
+
+                            Price Prediction System
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <ul class="hidden lg:flex items-center gap-8 font-medium">
+
+                    <li><a href="#" class="hover:text-blue-600 duration-300">Home</a></li>
+
+                    <li><a href="#" class="hover:text-blue-600 duration-300">Predict</a></li>
+
+                    <li><a href="#" class="hover:text-blue-600 duration-300">About</a></li>
+
+                    <li><a href="#" class="hover:text-blue-600 duration-300">Contact</a></li>
+
+                </ul>
+
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 duration-300 text-white px-6 py-3 rounded-xl shadow-lg">
+
+                    Get Started
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <section
+        class="bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-white overflow-hidden">
+
+        <div
+            class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Left -->
+
+            <div>
+
+                <span
+                    class="bg-white/20 backdrop-blur-lg px-5 py-2 rounded-full">
+
+                    🤖 Artificial Intelligence
+
+                </span>
+
+                <h1
+                    class="text-5xl lg:text-6xl font-extrabold leading-tight mt-8">
+
+                    Predict House Prices
+
+                    <span class="text-yellow-300">
+
+                        Instantly
+
+                    </span>
+
+                </h1>
+
+                <p
+                    class="text-lg text-blue-100 mt-8 leading-8">
+
+                    Our Machine Learning model predicts house prices using
+                    property features such as living area, quality,
+                    garage capacity, basement size, and much more.
+
+                </p>
+
+                <div class="flex gap-5 mt-10">
+
+                    <button
+                        class="bg-white text-blue-700 font-semibold px-8 py-4 rounded-xl shadow-xl">
+
+                        Predict Now
+
+                    </button>
+
+                    <button
+                        class="border border-white px-8 py-4 rounded-xl">
+
+                        Learn More
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="flex justify-center">
+
+                <img src="{{ url_for('static', filename='images/house.png') }}"
+                    class="w-full max-w-lg">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section class="-mt-16 relative z-20">
+
+        <div
+            class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Card -->
+
+            <div
+                class="bg-white rounded-2xl shadow-xl p-8">
+
+                <div
+                    class="w-16 h-16 rounded-full bg-blue-100 text-blue-700 flex justify-center items-center text-2xl">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                </div>
+
+                <h2 class="text-4xl font-bold mt-5">
+
+                    89%
+
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+
+                    Model Accuracy
+
+                </p>
+
+            </div>
+
+            <!-- Card -->
+
+            <div
+                class="bg-white rounded-2xl shadow-xl p-8">
+
+                <div
+                    class="w-16 h-16 rounded-full bg-green-100 text-green-700 flex justify-center items-center text-2xl">
+
+                    <i class="fa-solid fa-house"></i>
+
+                </div>
+
+                <h2 class="text-4xl font-bold mt-5">
+
+                    1500+
+
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+
+                    Houses Trained
+
+                </p>
+
+            </div>
+
+            <!-- Card -->
+
+            <div
+                class="bg-white rounded-2xl shadow-xl p-8">
+
+                <div
+                    class="w-16 h-16 rounded-full bg-yellow-100 text-yellow-600 flex justify-center items-center text-2xl">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h2 class="text-4xl font-bold mt-5">
+
+                    6
+
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+
+                    Prediction Features
+
+                </p>
+
+            </div>
+
+            <!-- Card -->
+
+            <div
+                class="bg-white rounded-2xl shadow-xl p-8">
+
+                <div
+                    class="w-16 h-16 rounded-full bg-violet-100 text-violet-700 flex justify-center items-center text-2xl">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <h2 class="text-2xl font-bold mt-5">
+
+                    Linear Regression
+
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+
+                    AI Model
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Next Parts Will Be Added Here -->
+<!-- ================= PREDICTION SECTION ================= -->
+
+<section class="py-24 bg-slate-100">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+
+            <span class="text-blue-600 font-semibold uppercase tracking-widest">
+
+                AI Prediction
+
+            </span>
+
+            <h2 class="text-4xl font-bold text-slate-800 mt-3">
+
+                Predict Your House Price
+
+            </h2>
+
+            <p class="text-gray-500 mt-4">
+
+                Enter the property details below and let our Machine Learning
+                model estimate the house price.
+
+            </p>
+
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-10">
+
+            <!-- ================= FORM ================= -->
+
+            <div class="lg:col-span-2">
+
+                <div class="bg-white rounded-3xl shadow-xl p-10">
+
+                    <h3 class="text-2xl font-bold text-slate-800 mb-8">
+
+                        House Information
+
+                    </h3>
+
+                    {% if error %}<div class="mb-6 rounded-xl bg-red-100 text-red-800 p-4">{{ error }}</div>{% endif %}
+
+                        <form
+    id="predictionForm"
+    action="/predict"
+    method="POST">
+                        <div class="grid md:grid-cols-2 gap-6">
+
+                            <!-- Living Area -->
+
+                            <div>
+
+                                <label class="font-medium">
+
+                                    Living Area (sq ft)
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    placeholder="e.g. 1800"
+                                    class="mt-2 w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none" name="GrLivArea" required min="0">
+
+                            </div>
+
+                            <!-- Year -->
+
+                            <div>
+
+                                <label class="font-medium">
+
+                                    Year Built
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    placeholder="e.g. 2012"
+                                    class="mt-2 w-full border rounded-xl px-4 py-3" name="YearBuilt" required min="0">
+
+                            </div>
+
+                            <!-- Garage -->
+
+                            <div>
+
+                                <label class="font-medium">
+
+                                    Garage Cars
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    placeholder="e.g. 2"
+                                    class="mt-2 w-full border rounded-xl px-4 py-3" name="GarageCars" required min="0">
+
+                            </div>
+
+                            <!-- Basement -->
+
+                            <div>
+
+                                <label class="font-medium">
+
+                                    Basement Area
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    placeholder="e.g. 900"
+                                    class="mt-2 w-full border rounded-xl px-4 py-3" name="TotalBsmtSF" required min="0">
+
+                            </div>
+
+                            <!-- Quality -->
+
+                            <div>
+
+                                <label class="font-medium">
+
+                                    Overall Quality
+
+                                </label>
+
+                                <select
+                                    class="mt-2 w-full border rounded-xl px-4 py-3" name="OverallQual" required>
+
+                                    <option value="" selected disabled>Select</option>
+
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- Condition -->
+
+                            <div>
+
+                                <label class="font-medium">
+
+                                    Overall Condition
+
+                                </label>
+
+                                <select
+                                    class="mt-2 w-full border rounded-xl px-4 py-3" name="OverallCond" required>
+
+                                    <option value="" selected disabled>Select</option>
+
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="mt-10 w-full bg-gradient-to-r from-blue-600 to-violet-600 hover:scale-105 duration-300 text-white py-4 rounded-xl text-lg font-semibold shadow-lg">
+
+                            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
+
+                            Predict House Price
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- ================= RESULT CARD ================= -->
+
+            <div>
+
+                <div class="bg-white rounded-3xl shadow-xl p-8 sticky top-28">
+
+                    <div class="text-center">
+
+                        <div
+                            class="w-24 h-24 mx-auto rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white flex justify-center items-center text-4xl">
+
+                            <i class="fa-solid fa-house-circle-check"></i>
+
+                        </div>
+
+                        <h3 class="text-2xl font-bold mt-6">
+
+                            Prediction Result
+
+                        </h3>
+
+                        <p class="text-gray-500 mt-2">
+
+                            Estimated House Price
+
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="mt-8 bg-slate-100 rounded-2xl p-6 text-center">
+
+                        <p class="text-gray-500">
+
+                            Estimated Price
+
+                        </p>
+
+                        <h2
+                            id="predictedPrice"
+                            class="text-4xl font-bold text-blue-700 mt-3">
+
+                            {% if prediction is not none %}₹ {{ "{:,.0f}".format(prediction) }}{% else %}₹ 0{% endif %}
+
+                        </h2>
+
+                    </div>
+
+                    <div class="space-y-5 mt-8">
+
+                        <div class="flex justify-between">
+
+                            <span class="text-gray-500">
+
+                                Model
+
+                            </span>
+
+                            <strong>
+
+                                Linear Regression
+
+                            </strong>
+
+                        </div>
+
+                        <div class="flex justify-between">
+
+                            <span class="text-gray-500">
+
+                                Accuracy
+
+                            </span>
+
+                            <strong>
+
+                                89%
+
+                            </strong>
+
+                        </div>
+
+                        <div class="flex justify-between">
+
+                            <span class="text-gray-500">
+
+                                Status
+
+                            </span>
+
+                            <span
+                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+
+                                Ready
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="w-full mt-8 bg-slate-800 hover:bg-black duration-300 text-white py-3 rounded-xl">
+
+                        Download Report
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="py-20 bg-white">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <span class="text-blue-600 font-semibold uppercase tracking-widest">
+
+                AI Workflow
+
+            </span>
+
+            <h2 class="text-4xl font-bold text-slate-800 mt-4">
+
+                How Our AI Predicts House Prices
+
+            </h2>
+
+            <p class="text-gray-500 mt-4 max-w-3xl mx-auto">
+
+                Our Machine Learning model analyzes important property features
+                and predicts the estimated market price within seconds.
+
+            </p>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+
+            <!-- Card -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 text-center hover:shadow-xl duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-2xl">
+
+                    <i class="fa-solid fa-keyboard"></i>
+
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6">
+
+                    Enter Details
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    Enter all house information like area, year built and garage.
+
+                </p>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 text-center hover:shadow-xl duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-green-100 text-green-600 flex items-center justify-center text-2xl">
+
+                    <i class="fa-solid fa-database"></i>
+
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6">
+
+                    Data Processing
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    Flask sends your data to the trained Machine Learning model.
+
+                </p>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 text-center hover:shadow-xl duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center text-2xl">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6">
+
+                    AI Prediction
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    The trained Linear Regression model predicts the house price.
+
+                </p>
+
+            </div>
+
+            <!-- Card -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 text-center hover:shadow-xl duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-2xl">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6">
+
+                    Get Result
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    Instantly receive the estimated market price of your house.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TECHNOLOGIES ================= -->
+
+<section class="py-20 bg-slate-100">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-bold text-slate-800">
+
+                Technologies Used
+
+            </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+
+            <div class="bg-white rounded-3xl p-8 text-center shadow-lg">
+
+                <i class="fa-brands fa-python text-6xl text-blue-600"></i>
+
+                <h3 class="font-bold text-xl mt-5">
+
+                    Python
+
+                </h3>
+
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 text-center shadow-lg">
+
+                <i class="fa-solid fa-chart-line text-6xl text-green-600"></i>
+
+                <h3 class="font-bold text-xl mt-5">
+
+                    Scikit Learn
+
+                </h3>
+
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 text-center shadow-lg">
+
+                <i class="fa-solid fa-server text-6xl text-violet-600"></i>
+
+                <h3 class="font-bold text-xl mt-5">
+
+                    Flask
+
+                </h3>
+
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 text-center shadow-lg">
+
+                <i class="fa-brands fa-html5 text-6xl text-orange-500"></i>
+
+                <h3 class="font-bold text-xl mt-5">
+
+                    Tailwind CSS
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= WHY CHOOSE OUR AI ================= -->
+
+<section class="py-20 bg-white">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <span class="text-blue-600 uppercase font-semibold tracking-widest">
+
+                Why Choose Us
+
+            </span>
+
+            <h2 class="text-4xl font-bold text-slate-800 mt-4">
+
+                Smart AI Powered Prediction
+
+            </h2>
+
+            <p class="text-gray-500 mt-5 max-w-3xl mx-auto">
+
+                Our prediction system is built using Machine Learning algorithms
+                that analyze important housing features and estimate market
+                prices quickly and efficiently.
+
+            </p>
+
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 mt-16">
+
+            <!-- Feature -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 hover:-translate-y-2 duration-300 shadow-lg">
+
+                <div class="w-16 h-16 rounded-full bg-blue-100 flex justify-center items-center text-blue-600 text-2xl">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+                <h3 class="text-2xl font-semibold mt-6">
+
+                    Fast Prediction
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    Get instant house price predictions within a few seconds.
+
+                </p>
+
+            </div>
+
+            <!-- Feature -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 hover:-translate-y-2 duration-300 shadow-lg">
+
+                <div class="w-16 h-16 rounded-full bg-green-100 flex justify-center items-center text-green-600 text-2xl">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                </div>
+
+                <h3 class="text-2xl font-semibold mt-6">
+
+                    AI Powered
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    Built using Linear Regression and Machine Learning models.
+
+                </p>
+
+            </div>
+
+            <!-- Feature -->
+
+            <div class="bg-slate-50 rounded-3xl p-8 hover:-translate-y-2 duration-300 shadow-lg">
+
+                <div class="w-16 h-16 rounded-full bg-violet-100 flex justify-center items-center text-violet-600 text-2xl">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <h3 class="text-2xl font-semibold mt-6">
+
+                    Reliable Results
+
+                </h3>
+
+                <p class="text-gray-500 mt-4">
+
+                    Uses trained datasets to provide consistent predictions.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FAQ ================= -->
+
+<section class="py-20 bg-slate-100">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+        <div class="text-center">
+
+            <h2 class="text-4xl font-bold">
+
+                Frequently Asked Questions
+
+            </h2>
+
+        </div>
+
+        <div class="mt-12 space-y-5">
+
+            <details class="bg-white rounded-xl p-6 shadow">
+
+                <summary class="font-semibold cursor-pointer">
+
+                    How does this prediction work?
+
+                </summary>
+
+                <p class="mt-4 text-gray-500">
+
+                    The system uses a trained Machine Learning model to estimate
+                    house prices based on property features.
+
+                </p>
+
+            </details>
+
+            <details class="bg-white rounded-xl p-6 shadow">
+
+                <summary class="font-semibold cursor-pointer">
+
+                    Which algorithm is used?
+
+                </summary>
+
+                <p class="mt-4 text-gray-500">
+
+                    Linear Regression trained using the housing dataset.
+
+                </p>
+
+            </details>
+
+            <details class="bg-white rounded-xl p-6 shadow">
+
+                <summary class="font-semibold cursor-pointer">
+
+                    Is this prediction accurate?
+
+                </summary>
+
+                <p class="mt-4 text-gray-500">
+
+                    Accuracy depends on the dataset and model performance.
+
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+
+<section class="py-24 bg-gradient-to-r from-blue-700 via-indigo-700 to-violet-700 text-white">
+
+    <div class="max-w-6xl mx-auto text-center px-6">
+
+        <h2 class="text-5xl font-bold">
+
+            Ready to Predict Your House Price?
+
+        </h2>
+
+        <p class="mt-6 text-blue-100 text-lg">
+
+            Enter your property details and let our AI estimate the market value.
+
+        </p>
+
+        <a href="#predictionForm"
+            class="inline-block mt-10 bg-white text-blue-700 px-10 py-4 rounded-xl font-semibold shadow-xl hover:scale-105 duration-300">
+
+            Predict Now
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-slate-900 text-white py-10">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex flex-col lg:flex-row justify-between items-center">
+
+            <div>
+
+                <h2 class="text-2xl font-bold">
+
+                    HouseAI
+
+                </h2>
+
+                <p class="text-gray-400 mt-2">
+
+                    AI Powered House Price Prediction System
+
+                </p>
+
+            </div>
+
+            <div class="flex gap-5 mt-6 lg:mt-0 text-2xl">
+
+                <a href="#"><i class="fab fa-github"></i></a>
+
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+
+                <a href="#"><i class="fab fa-facebook"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+            </div>
+
+        </div>
+
+        <hr class="my-8 border-slate-700">
+
+        <p class="text-center text-gray-400">
+
+            © 2026 HouseAI | Developed using Python, Flask & Machine Learning
+
+        </p>
+
+    </div>
+
+</footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
